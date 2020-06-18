@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   user.associate = function (models) {
-    user.hasMany(models.teammate);
+    user.hasMany(models.teamMate);
     user.hasMany(models.rsvp);
     user.hasMany(models.event);
     user.hasMany(models.team);

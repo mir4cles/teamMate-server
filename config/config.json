@@ -1,9 +1,6 @@
 {
   "development": {
-    "username": "postgres",
-    "password": "secret",
-    "database": "teamMate_development",
-    "host": "localhost",
+    "url": "postgres://qpnffyez:VBbvb_wK0GOSx_HuJE7fxTpd1g9vjJYT@rogue.db.elephantsql.com:5432/qpnffyez",
     "dialect": "postgres",
     "operatorsAliases": "0"
   },
