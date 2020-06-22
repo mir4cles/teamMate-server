@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
           "https://www.ajax.nl/upload_mm/f/b/0/69939_fullimage_65960_fullimage_65187_fullimage_default-team-logo-500.png",
         allowNull: false,
       },
-      createdByUserId: {
+      userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -29,10 +29,12 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   team.associate = function (models) {
-    team.belongsTo(models.user);
-    team.hasMany(models.teamMate);
+    // team.belongsToMany(models.user, {
+    //   through: "teamMates",
+    //   foreignKey: "userId",
+    // });
     team.hasMany(models.event);
-    team.hasMany(models.comment);
+    // team.hasMany(models.comment);
   };
   return team;
 };

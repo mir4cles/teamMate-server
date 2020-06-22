@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   teamMate.associate = function (models) {
-    teamMate.hasMany(models.user);
-    teamMate.hasMany(models.team);
+    teamMate.belongsTo(models.user);
+    teamMate.belongsTo(models.team);
   };
   return teamMate;
 };
