@@ -28,7 +28,7 @@ router.get("/:id", async (req, res) => {
 
   const event = await Event.findByPk(id, {});
 
-  if (artwork === null) {
+  if (event === null) {
     return res.status(404).send({ message: "Event not found" });
   }
 
