@@ -6,6 +6,7 @@ const authRouter = require("./routers/auth");
 const authMiddleWare = require("./auth/middleware");
 
 const eventRouter = require("./routers/events");
+const teamRouter = require("./routers/teams");
 
 const app = express();
 
@@ -155,6 +156,8 @@ app.post("/authorized_post_request", authMiddleWare, (req, res) => {
 app.use("/", authRouter);
 
 app.use("/events", eventRouter);
+
+app.use("/teams", teamRouter);
 
 // Listen for connections on specified port (default is port 4000)
 
