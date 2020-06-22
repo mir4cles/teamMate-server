@@ -11,6 +11,8 @@ module.exports = {
           endDateTime: "2020-06-24 17:00:00.000+00",
           location: "Museumplein, Amsterdam",
           sportType: "Basketball",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           public: true,
           outdoor: true,
           userId: 2,
@@ -23,6 +25,8 @@ module.exports = {
           endDateTime: "2020-06-17 22:00:00.000+00",
           location: "Tiger Cage, Amsterdam",
           sportType: "Basketball",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
           public: false,
           outdoor: false,
           teamId: 1,
