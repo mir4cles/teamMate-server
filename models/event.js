@@ -39,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
-      createdByUserId: {
+      userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -54,8 +54,11 @@ module.exports = (sequelize, DataTypes) => {
   event.associate = function (models) {
     event.belongsTo(models.user);
     event.belongsTo(models.team);
-    event.hasMany(models.rsvp);
-    event.hasMany(models.comment);
+    // event.belongsToMany(models.user, {
+    //   through: "rsvps",
+    //   foreignKey: "userId",
+    // });
+    // event.hasMany(models.comment);
   };
   return event;
 };

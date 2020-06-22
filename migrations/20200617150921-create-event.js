@@ -42,23 +42,21 @@ module.exports = {
       },
       teamId: {
         type: Sequelize.INTEGER,
-        allowNull: true,
         references: {
           model: "teams",
           key: "id",
         },
         onUpdate: "CASCADE",
-        onDelete: "SET NULL",
+        onDelete: "CASCADE",
       },
-      createdByUserId: {
+      userId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
         references: {
           model: "users",
           key: "id",
         },
         onUpdate: "CASCADE",
-        onDelete: "SET NULL",
+        onDelete: "CASCADE",
       },
       maxPlayers: {
         type: Sequelize.INTEGER,
@@ -68,12 +66,10 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        allowNull: false,
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        allowNull: false,
       },
     });
   },

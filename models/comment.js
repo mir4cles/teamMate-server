@@ -23,9 +23,15 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   comment.associate = function (models) {
-    comment.belongsTo(models.user);
-    comment.hasMany(models.team);
-    comment.hasMany(models.event);
+    // comment.belongsTo(models.user, {
+    //   foreignKey: "userId",
+    // });
+    // comment.hasMany(models.team, {
+    //   foreignKey: "teamId",
+    // });
+    // comment.hasMany(models.event, {
+    //   foreignKey: "eventId",
+    // });
   };
   return comment;
 };

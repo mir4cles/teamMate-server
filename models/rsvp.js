@@ -19,8 +19,8 @@ module.exports = (sequelize, DataTypes) => {
     {}
   );
   rsvp.associate = function (models) {
-    rsvp.hasMany(models.user);
-    rsvp.hasMany(models.event);
+    rsvp.belongsTo(models.user);
+    rsvp.belongsTo(models.event);
   };
   return rsvp;
 };

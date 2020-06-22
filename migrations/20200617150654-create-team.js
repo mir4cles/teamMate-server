@@ -26,7 +26,7 @@ module.exports = {
           "https://www.ajax.nl/upload_mm/f/b/0/69939_fullimage_65960_fullimage_65187_fullimage_default-team-logo-500.png",
         allowNull: false,
       },
-      createdByUserId: {
+      userId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         references: {
