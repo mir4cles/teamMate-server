@@ -28,7 +28,9 @@ router.get("/:id", async (req, res) => {
     return res.status(400).send({ message: "Event id is not a number" });
   }
 
-  const event = await Event.findByPk(id, {});
+  const event = await Event.findByPk(id, {
+    include: ["attandees"],
+  });
 
   if (event === null) {
     return res.status(404).send({ message: "Event not found" });
@@ -67,6 +69,35 @@ router.post("/", auth, async (req, res) => {
   });
 
   return res.status(201).send({ message: "Event created", event });
+});
+
+router.post("/:id/rsvp", auth, async (req, res) => {
+  const event = await Event.findByPk(req.params.id);
+  const eventId = req.params.id;
+
+  if (event === null) {
+    return res.status(404).send({ message: "This event does not exist" });
+  }
+
+  const { id } = req.body;
+
+  if (!id) {
+    return res
+      .status(400)
+      .send({ message: "An rsvp must have a valid userId" });
+  }
+
+  const user = await User.findByPk(id);
+
+  const rsvp = await Rsvp.create({
+    userId: id,
+    eventId: eventId,
+    attending: "yes",
+  });
+
+  return res
+    .status(201)
+    .send({ message: "Rsvp successful", rsvp, user, event });
 });
 
 module.exports = router;
