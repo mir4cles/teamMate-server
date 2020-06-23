@@ -1,5 +1,5 @@
 const { Router } = require("express");
-// const auth = require("../auth/middleware");
+const auth = require("../auth/middleware");
 const Event = require("../models").event;
 // const Team = require("../models").team;
 // const TeamMate = require("../models").teamMate;
@@ -33,6 +33,38 @@ router.get("/:id", async (req, res) => {
   }
 
   res.status(200).send({ message: "ok", event });
+});
+
+router.post("/", auth, async (req, res) => {
+  const {
+    title,
+    startDate,
+    endDate,
+    location,
+    sportType,
+    description,
+    outdoor,
+    maxPlayers,
+    id,
+  } = req.body;
+
+  if (req.body.length === 0) {
+    return res.status(400).send({ message: "No input" });
+  }
+
+  const event = await Event.create({
+    title,
+    startDateTime: startDate,
+    endDateTime: endDate,
+    location,
+    sportType,
+    description,
+    outdoor,
+    maxPlayers,
+    userId: id,
+  });
+
+  return res.status(201).send({ message: "Event created", event });
 });
 
 module.exports = router;

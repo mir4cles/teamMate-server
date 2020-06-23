@@ -8,11 +8,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       startDateTime: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       endDateTime: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       location: {
@@ -29,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       public: {
         type: DataTypes.BOOLEAN,
+        defaultValue: true,
         allowNull: false,
       },
       outdoor: {
