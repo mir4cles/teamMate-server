@@ -27,15 +27,15 @@ module.exports = (sequelize, DataTypes) => {
   );
   user.associate = function (models) {
     user.hasMany(models.event);
-    // user.belongsToMany(models.event, {
-    //   through: "rsvps",
-    //   foreignKey: "userId",
-    // });
-    user.hasMany(models.team);
-    user.belongsToMany(models.team, {
-      through: "teamMates",
+    user.belongsToMany(models.event, {
+      through: "rsvps",
       foreignKey: "userId",
     });
+    user.hasMany(models.team);
+    // user.belongsToMany(models.team, {
+    //   through: "teamMates",
+    //   foreignKey: "userId",
+    // });
     user.hasMany(models.comment);
   };
   return user;

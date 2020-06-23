@@ -55,10 +55,11 @@ module.exports = (sequelize, DataTypes) => {
   event.associate = function (models) {
     event.belongsTo(models.user);
     event.belongsTo(models.team);
-    // event.belongsToMany(models.user, {
-    //   through: "rsvps",
-    //   foreignKey: "userId",
-    // });
+    event.belongsToMany(models.user, {
+      through: "rsvps",
+      foreignKey: "eventId",
+      as: "attandees",
+    });
     // event.hasMany(models.comment);
   };
   return event;

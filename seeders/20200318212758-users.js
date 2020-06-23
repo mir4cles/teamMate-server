@@ -9,7 +9,7 @@ module.exports = {
       [
         {
           name: "Joe Exotic",
-          email: "joe@gwzoe.com",
+          email: "joe@gwzoo.com",
           password: bcrypt.hashSync("joe1234", SALT_ROUNDS),
           createdAt: new Date(),
           updatedAt: new Date(),

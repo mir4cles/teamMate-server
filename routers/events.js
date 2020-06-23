@@ -1,11 +1,11 @@
 const { Router } = require("express");
 const auth = require("../auth/middleware");
 const Event = require("../models").event;
-// const Team = require("../models").team;
-// const TeamMate = require("../models").teamMate;
-// const Rsvp = require("../models").rsvp;
-// const Comment = require("../models").comment;
-// const User = require("../models").user;
+const Team = require("../models").team;
+const TeamMate = require("../models").teamMate;
+const Rsvp = require("../models").rsvp;
+const Comment = require("../models").comment;
+const User = require("../models").user;
 
 const router = new Router();
 
@@ -15,6 +15,8 @@ router.get("/", async (req, res) => {
   const events = await Event.findAndCountAll({
     limit,
     offset,
+    include: ["attandees"],
+    // order: [[User, "createdAt", "ASC"]],
   });
   res.status(200).send({ message: "ok", events });
 });
