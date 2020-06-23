@@ -13,7 +13,7 @@ module.exports = {
         allowNull: false,
       },
       startDateTime: {
-        type: Sequelize.DATE,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       endDateTime: {
@@ -34,6 +34,7 @@ module.exports = {
       },
       public: {
         type: Sequelize.BOOLEAN,
+        defaultValue: true,
         allowNull: false,
       },
       outdoor: {
