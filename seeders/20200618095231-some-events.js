@@ -30,7 +30,7 @@ module.exports = {
           public: false,
           outdoor: false,
           teamId: 1,
-          userId: 1,
+          userId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

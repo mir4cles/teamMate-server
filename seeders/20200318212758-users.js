@@ -9,7 +9,7 @@ module.exports = {
       [
         {
           name: "Joe Exotic",
-          email: "joe@gwzoe.com",
+          email: "joe@gwzoo.com",
           password: bcrypt.hashSync("joe1234", SALT_ROUNDS),
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -18,6 +18,20 @@ module.exports = {
           name: "Carole Baskin",
           email: "carole@bigcatrescue.com",
           password: bcrypt.hashSync("carole1234", SALT_ROUNDS),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Juri",
+          email: "juri@juri.com",
+          password: bcrypt.hashSync("juri1234", SALT_ROUNDS),
+          createdAt: new Date(),
+          updatedAt: new Date(),
+        },
+        {
+          name: "Joya",
+          email: "joya@joya.com",
+          password: bcrypt.hashSync("joya1234", SALT_ROUNDS),
           createdAt: new Date(),
           updatedAt: new Date(),
         },
