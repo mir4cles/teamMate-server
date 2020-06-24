@@ -89,15 +89,31 @@ router.post("/:id/rsvp", auth, async (req, res) => {
 
   const user = await User.findByPk(id);
 
-  const rsvp = await Rsvp.create({
-    userId: id,
-    eventId: eventId,
-    attending: "yes",
-  });
+  // const rsvp = await Rsvp.create({
+  //   userId: id,
+  //   eventId: eventId,
+  //   attending: "yes",
+  // });
 
-  return res
-    .status(201)
-    .send({ message: "Rsvp successful", rsvp, user, event });
+  const rsvp = await Rsvp.findOrCreate({
+    where: {
+      userId: id,
+      eventId: eventId,
+    },
+    defaults: {
+      attending: "yes",
+    },
+  });
+  console.log("rsvp", rsvp[1]);
+  if (!rsvp[1]) {
+    return res
+      .status(400)
+      .send({ message: "User is already attending this event" });
+  } else {
+    return res
+      .status(201)
+      .send({ message: "Rsvp successful", rsvp, user, event });
+  }
 });
 
 module.exports = router;
