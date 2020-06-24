@@ -88,13 +88,6 @@ router.post("/:id/rsvp", auth, async (req, res) => {
   }
 
   const user = await User.findByPk(id);
-
-  // const rsvp = await Rsvp.create({
-  //   userId: id,
-  //   eventId: eventId,
-  //   attending: "yes",
-  // });
-
   const rsvp = await Rsvp.findOrCreate({
     where: {
       userId: id,
@@ -113,6 +106,35 @@ router.post("/:id/rsvp", auth, async (req, res) => {
     return res
       .status(201)
       .send({ message: "Rsvp successful", rsvp, user, event });
+  }
+});
+
+router.delete("/:id/rsvp", auth, async (req, res, next) => {
+  try {
+    const eventId = parseInt(req.params.id);
+    const userId = parseInt(req.user.id);
+    const event = await Event.findByPk(eventId);
+    console.log("data in request body", req.body);
+    console.log("id in request body", userId);
+
+    if (event === null) {
+      return res.status(404).send({ message: "Event not found" });
+    }
+
+    if (!userId) {
+      return res.status(405).send({ message: "User not found" });
+    }
+
+    const deleted = await Rsvp.destroy({
+      where: {
+        userId: userId,
+        eventId: eventId,
+      },
+    });
+    console.log("rsvp to delete", deleted);
+    return res.status(204).send({ message: "Rsvp cancelled", event });
+  } catch (e) {
+    next(e);
   }
 });
 
