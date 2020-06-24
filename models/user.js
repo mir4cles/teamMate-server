@@ -30,6 +30,7 @@ module.exports = (sequelize, DataTypes) => {
     user.belongsToMany(models.event, {
       through: "rsvps",
       foreignKey: "userId",
+      as: "attending",
     });
     user.hasMany(models.team);
     // user.belongsToMany(models.team, {

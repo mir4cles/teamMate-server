@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
   const events = await Event.findAndCountAll({
     limit,
     offset,
-    include: ["attandees"],
+    include: ["attending"],
     // order: [[User, "createdAt", "ASC"]],
   });
   res.status(200).send({ message: "ok", events });
@@ -29,7 +29,7 @@ router.get("/:id", async (req, res) => {
   }
 
   const event = await Event.findByPk(id, {
-    include: ["attandees"],
+    include: ["attending"],
   });
 
   if (event === null) {
