@@ -15,7 +15,8 @@ router.get("/", async (req, res) => {
   const events = await Event.findAndCountAll({
     limit,
     offset,
-    include: ["attending"],
+    include: ["attending", "user"],
+    // model: User,
     // order: [[User, "createdAt", "ASC"]],
   });
   res.status(200).send({ message: "ok", events });
