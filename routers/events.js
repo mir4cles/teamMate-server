@@ -71,6 +71,39 @@ router.post("/", auth, async (req, res) => {
   return res.status(201).send({ message: "Event created", event });
 });
 
+router.patch("/:eventId", auth, async (req, res) => {
+  const event = await Event.findByPk(req.params.eventId);
+  if (!event.userId === req.user.id) {
+    return res
+      .status(403)
+      .send({ message: "You are not authorized to update this homepage" });
+  }
+
+  const {
+    title,
+    startDate,
+    endDate,
+    location,
+    sportType,
+    description,
+    outdoor,
+    maxPlayers,
+  } = req.body;
+
+  await event.update({
+    title,
+    startDate,
+    endDate,
+    location,
+    sportType,
+    description,
+    outdoor,
+    maxPlayers,
+  });
+
+  return res.status(200).send({ event });
+});
+
 router.post("/:id/rsvp", auth, async (req, res) => {
   const event = await Event.findByPk(req.params.id);
   const eventId = req.params.id;
