@@ -7,8 +7,8 @@ module.exports = {
       [
         {
           title: "Basketball pickup games",
-          startDateTime: "2020-06-24 14:00:00.000+00",
-          endDateTime: "2020-06-24 17:00:00.000+00",
+          startDateTime: "2020-06-24T14:00",
+          endDateTime: "2020-06-24T17:00",
           location: "Museumplein, Amsterdam",
           sportType: "Basketball",
           description:
@@ -21,8 +21,8 @@ module.exports = {
         },
         {
           title: "Training",
-          startDateTime: "2020-06-17 20:00:00.000+00",
-          endDateTime: "2020-06-17 22:00:00.000+00",
+          startDateTime: "2020-06-17T20:00",
+          endDateTime: "2020-06-17T22:00",
           location: "Tiger Cage, Amsterdam",
           sportType: "Basketball",
           description:
