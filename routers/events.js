@@ -30,7 +30,7 @@ router.get("/:id", async (req, res) => {
   }
 
   const event = await Event.findByPk(id, {
-    include: ["attending"],
+    include: ["attending", "user"],
   });
 
   if (event === null) {
