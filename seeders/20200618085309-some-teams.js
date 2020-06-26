@@ -11,7 +11,7 @@ module.exports = {
           description: "Cage fights ftw.",
           logoUrl:
             "https://miro.medium.com/max/1200/1*UmGJFKdEvaeI1cmQNjMBhg.png",
-          createdByUserId: 1,
+          userId: 1,
           createdAt: new Date(),
           updatedAt: new Date(),
         },
@@ -21,7 +21,7 @@ module.exports = {
           description: "Keeping games lit since 2020.",
           logoUrl:
             "https://miro.medium.com/max/1200/1*UmGJFKdEvaeI1cmQNjMBhg.png",
-          createdByUserId: 1,
+          userId: 2,
           createdAt: new Date(),
           updatedAt: new Date(),
         },

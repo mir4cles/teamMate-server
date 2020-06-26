@@ -23,8 +23,7 @@ module.exports = {
       },
       avatarUrl: {
         type: Sequelize.STRING,
-        defaultValue:
-          "https://morgancarter.com.au/assets/images/blog/encouraging-upload/thumbnail.png",
+        defaultValue: "https://i.pravatar.cc/300",
         allowNull: false,
       },
       createdAt: {

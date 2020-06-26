@@ -8,11 +8,11 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
       startDateTime: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       endDateTime: {
-        type: DataTypes.DATE,
+        type: DataTypes.STRING,
         allowNull: false,
       },
       location: {
@@ -29,6 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       public: {
         type: DataTypes.BOOLEAN,
+        defaultValue: true,
         allowNull: false,
       },
       outdoor: {
@@ -39,7 +40,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
-      createdByUserId: {
+      userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
@@ -54,8 +55,12 @@ module.exports = (sequelize, DataTypes) => {
   event.associate = function (models) {
     event.belongsTo(models.user);
     event.belongsTo(models.team);
-    event.hasMany(models.rsvp);
-    event.hasMany(models.comment);
+    event.belongsToMany(models.user, {
+      through: "rsvps",
+      foreignKey: "eventId",
+      as: "attending",
+    });
+    // event.hasMany(models.comment);
   };
   return event;
 };

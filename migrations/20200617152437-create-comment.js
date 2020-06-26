@@ -14,33 +14,30 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: "users",
-          key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "SET NULL",
+        // references: {
+        //   model: "users",
+        //   key: "id",
+        // },
+        // onUpdate: "CASCADE",
+        // onDelete: "CASCADE",
       },
       eventId: {
         type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: "events",
-          key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "SET NULL",
+        // references: {
+        //   model: "events",
+        //   key: "id",
+        // },
+        // onUpdate: "CASCADE",
+        // onDelete: "CASCADE",
       },
       teamId: {
         type: Sequelize.INTEGER,
-        allowNull: true,
-        references: {
-          model: "teams",
-          key: "id",
-        },
-        onUpdate: "CASCADE",
-        onDelete: "SET NULL",
+        // references: {
+        //   model: "teams",
+        //   key: "id",
+        // },
+        // onUpdate: "CASCADE",
+        // onDelete: "CASCADE",
       },
       createdAt: {
         allowNull: false,

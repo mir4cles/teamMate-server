@@ -18,18 +18,24 @@ module.exports = (sequelize, DataTypes) => {
       },
       avatarUrl: {
         type: DataTypes.STRING,
-        defaultValue:
-          "https://morgancarter.com.au/assets/images/blog/encouraging-upload/thumbnail.png",
+        defaultValue: "https://i.pravatar.cc/300",
         allowNull: false,
       },
     },
     {}
   );
   user.associate = function (models) {
-    user.hasMany(models.teamMate);
-    user.hasMany(models.rsvp);
     user.hasMany(models.event);
+    user.belongsToMany(models.event, {
+      through: "rsvps",
+      foreignKey: "userId",
+      as: "attending",
+    });
     user.hasMany(models.team);
+    // user.belongsToMany(models.team, {
+    //   through: "teamMates",
+    //   foreignKey: "userId",
+    // });
     user.hasMany(models.comment);
   };
   return user;
